@@ -32,12 +32,12 @@ def get_city_boundary(city_name):
 
         # Фильтруем городской округ
         filtered = gdf[
-            (gdf['name'].str.contains(city_name, na=False)) &
+            (gdf['name'].str.contains(city_name, na=False)) & # Проверяем наличие названия города
             (gdf['admin_level'] == '6')  # Уровень для городов федерального значения
         ]
 
-        if not filtered.empty:
-            return filtered.reset_index()
+        if not filtered.empty: # Если данные не пустые
+            return filtered.reset_index() # Возвращаем GeoDataFrame 
 
         # Геокодирование
         # return ox.geocode_to_gdf(f'{city_name}, Россия', which_result=1) 
