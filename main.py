@@ -1,4 +1,5 @@
-#!python 3.13
+#!python 3.13 
+# python3.13 (Linux) виртуальная среда venv, если python3.11.5 (MacOS) виртуальная среда conda activate //anaconda3/envs/condageoenv
 
 import geopandas as gpd  # Работа с геоданными
 import pandas as pd
@@ -155,11 +156,11 @@ if __name__ == "__main__":
             'type': 'Polygon',
             'coordinates': [
                 np.column_stack((
-                    np.array(geoJson['coordinates'][0])[:, 1],
+                    np.array(geoJson['coordinates'][0])[:, 1], 
                     np.array(geoJson['coordinates'][0])[:, 0]
                 )).tolist()
             ]
-        }
+        } # вместо [(X1, Y1), (X2, Y2), ...], переставляем столбцы с координатами и получаем [(Y1, X1), (Y2, X2), ...]
 
         # Вызов функции для создания гексагонов
         create_hexagons(geoJson, city_map)
